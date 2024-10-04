@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Forex Scraper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Forex Scraper** is a full-stack application that scrapes historical forex data from Yahoo Finance, stores it in a database, and presents it in a user-friendly interface. The backend is built with Java Spring Boot, and the frontend is a React-based web application. This project allows users to query historical forex data between specified periods for different currency pairs.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [API Documentation](#api-documentation)
+4. [Installation](#installation)
+   1. [Backend (Spring Boot)](#backend-spring-boot)
+   2. [Frontend (React)](#frontend-react)
+5. [Deployment](#deployment)
+6. [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Scrape and display historical forex data
+- Store the forex data in a relational database
+- Query the data by currency pair and period
+- User-friendly frontend interface for querying forex data
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **Backend**: Spring Boot, Hibernate, Jsoup for web scraping, H2 Database for local testing, JPA for database interactions.
+- **Frontend**: React.js, Chakra UI for styling, Fetch API for consuming the backend services.
+- **Database**: H2 (Local), can be replaced with other databases (MySQL, PostgreSQL, etc.)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Documentation
 
-### `npm run build`
+Full API documentation is available at [Postman API Documentation](https://documenter.getpostman.com/view/22879272/2sAXxMfD5A).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend (Spring Boot)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/adityakm24/forex-scraper.git
+    cd forex-scraper
+    ```
 
-### `npm run eject`
+2. **Set up the database:**
+    By default, the application uses an H2 database for local development. If you want to use a different database (like MySQL or PostgreSQL), update the `application.properties` file accordingly.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Run the application:**
+    Make sure you have Java 17+ installed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    ./gradlew bootRun
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    The backend will be available at: `http://localhost:8080`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **H2 Database Console:**
+   Access the H2 console at `http://localhost:8080/h2-console` (if enabled). The default credentials are set in the `application.properties`.
 
-## Learn More
+### Frontend (React)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Navigate to the frontend directory:**
+    ```bash
+    cd frontend
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install dependencies:**
+    Make sure you have Node.js and npm installed, then run:
 
-### Code Splitting
+    ```bash
+    npm install
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Start the frontend:**
+    ```bash
+    npm start
+    ```
 
-### Analyzing the Bundle Size
+    The frontend will be available at: `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Deployment
 
-### Making a Progressive Web App
+### Deploying to Heroku (Backend)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Create a Heroku account** if you don't already have one.
+2. **Install the Heroku CLI:**
+   Follow the instructions [here](https://devcenter.heroku.com/articles/heroku-cli).
 
-### Advanced Configuration
+3. **Login to Heroku:**
+    ```bash
+    heroku login
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. **Create a new Heroku app:**
+    ```bash
+    heroku create forex-scraper
+    ```
 
-### Deployment
+5. **Deploy the backend:**
+    ```bash
+    git push heroku main
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+6. **Set up environment variables (for databases, etc.):**
+    ```bash
+    heroku config:set DATABASE_URL=your_database_url
+    ```
 
-### `npm run build` fails to minify
+### Deploying the Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The frontend can be deployed to any static hosting provider, such as Vercel, Netlify, or GitHub Pages.
+
+1. **Build the frontend for production:**
+    ```bash
+    npm run build
+    ```
+
+2. **Deploy to Vercel:**
+    - Follow the instructions at [https://vercel.com/docs](https://vercel.com/docs).
+    - Link your GitHub repository and deploy.
+
+Alternatively, you can deploy it to any static file host by uploading the `build/` folder.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
