@@ -1,7 +1,6 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.9.3",
@@ -19,7 +18,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-flagkit": "^2.0.4",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.8.1",
     "react-world-flags": "^1.6.0",
     "stream-browserify": "^3.0.0",
