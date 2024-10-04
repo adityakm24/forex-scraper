@@ -119,7 +119,4 @@ The frontend can be deployed to any static hosting provider, such as Vercel, Net
 
 Alternatively, you can deploy it to any static file host by uploading the `build/` folder.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
 
