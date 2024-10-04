@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ForexForm from "./ForexForm";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+// Define a custom theme with global styles
+const theme = extendTheme({
+  styles: {
+    global: {
+      // Applies to the entire body
+      body: {
+        bg: "#111", // Set the background color to black
+        color: "white", // Set the default font color to white
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <div className="App">
+        <ForexForm />
+      </div>
+    </ChakraProvider>
   );
 }
 
